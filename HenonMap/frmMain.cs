@@ -22,6 +22,8 @@ namespace HenonMap
             this.plotView3.Model = new OxyPlot.PlotModel { Title = "Multiple Alpha Adjustable Beta Hénon Map" };
             this.plotView4.Model = new OxyPlot.PlotModel { Title = "Alpha against X Hénon Map" };
             this.plotView5.Model = new OxyPlot.PlotModel { Title = "Beta against X Hénon Map" };
+            this.plotView6x.Model = new OxyPlot.PlotModel { Title = "Alpha against X Hénon Map" };
+            this.plotView6y.Model = new OxyPlot.PlotModel { Title = "Alpha against Y Hénon Map" };
 
             // Select default tabPage
             this.initDrawing();
@@ -38,26 +40,34 @@ namespace HenonMap
                 case 1:
                     this.drawDefaultMap();
                     break;
-
                 case 2:
                     this.drawFixedAlpha();
                     break;
-
                 case 3:
                     this.drawFixedBeta();
                     break;
-
                 case 4:
                     this.drawAlphaPlot();
                     break;
-
                 case 5:
                     this.drawBetaPlot();
                     break;
-
+                case 6:
+                    this.drawDouble();
+                    break;
                 default:
                     break;
             }
+        }
+
+        // Window Client Size Changed
+        private void tabPage6_SizeChanged(object sender, EventArgs e)
+        {
+            int rwidth = this.tabPage6.Size.Width / 2;
+            int lwidth = this.tabPage6.Size.Width - rwidth;
+            this.plotView6x.Width = lwidth;
+            this.plotView6y.Left = lwidth;
+            this.plotView6y.Width = rwidth;
         }
 
         // #1 defaultMap parameter changes
@@ -282,6 +292,35 @@ namespace HenonMap
             {
                 this.alpha5 = Convert.ToDouble(this.trackBar5.Value) / 1000.0;
                 this.textBox5.Text = Convert.ToString(this.alpha5);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
+        // #6 doublePlot parameter change
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox6.Text); }
+            catch { }
+            if (val != this.beta6)
+            {
+                this.beta6 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar6.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar6_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox6.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar6.Value)
+            {
+                this.beta6 = Convert.ToDouble(this.trackBar6.Value) / 1000.0;
+                this.textBox6.Text = Convert.ToString(this.beta6);
             }
             tabControl1_SelectedIndexChanged(sender, e);
         }

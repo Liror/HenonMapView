@@ -24,6 +24,8 @@ namespace HenonMap
         private OxyPlot.Series.ScatterSeries scatterSeries3 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries4 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries5 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
+        private OxyPlot.Series.ScatterSeries scatterSeries6x = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
+        private OxyPlot.Series.ScatterSeries scatterSeries6y = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private double alpha1 = DEFAULT_ALPHA;
         private double beta1 = DEFAULT_BETA;
         private double alpha2 = DEFAULT_ALPHA;
@@ -32,6 +34,7 @@ namespace HenonMap
         private double beta3 = DEFAULT_BETA;
         private double beta4 = DEFAULT_BETA;
         private double alpha5 = DEFAULT_ALPHA;
+        private double beta6 = DEFAULT_BETA;
 
         // Initializers
         private void initDrawing()
@@ -42,6 +45,8 @@ namespace HenonMap
             this.scatterSeries3.TrackerFormatString += "\nIteration: {Tag}";
             this.scatterSeries4.TrackerFormatString += "\nIteration: {Tag}";
             this.scatterSeries5.TrackerFormatString += "\nIteration: {Tag}";
+            this.scatterSeries6x.TrackerFormatString += "\nIteration: {Tag}";
+            this.scatterSeries6y.TrackerFormatString += "\nIteration: {Tag}";
             this.textBox1a.Text = Convert.ToString(this.alpha1);
             this.textBox1b.Text = Convert.ToString(this.beta1);
             this.trackBar1a.Value = Convert.ToInt32(this.alpha1 * 1000);
@@ -58,6 +63,8 @@ namespace HenonMap
             this.trackBar4.Value = Convert.ToInt32(this.beta4 * 1000);
             this.textBox5.Text = Convert.ToString(this.alpha5);
             this.trackBar5.Value = Convert.ToInt32(this.alpha5 * 1000);
+            this.textBox6.Text = Convert.ToString(this.beta6);
+            this.trackBar6.Value = Convert.ToInt32(this.beta6 * 1000);
 
             // Initialize axis
             var customAxis1 = new OxyPlot.Axes.RangeColorAxis { Key = "customColorsARGB1" };
@@ -66,6 +73,12 @@ namespace HenonMap
             var customAxis2 = new OxyPlot.Axes.RangeColorAxis { Key = "customColorsARGB2" };
             customAxis2.AddRange(0.0, 1.5, OxyPlot.OxyColor.FromArgb(8, 255, 0, 0));
             customAxis2.AddRange(1.5, 2.5, OxyPlot.OxyColor.FromArgb(8, 0, 255, 0));
+            var customAxis3 = new OxyPlot.Axes.RangeColorAxis { Key = "customColorsARGB3" };
+            customAxis3.AddRange(0.0, 1.5, OxyPlot.OxyColor.FromArgb(8, 255, 0, 0));
+            customAxis3.AddRange(1.5, 2.5, OxyPlot.OxyColor.FromArgb(8, 0, 255, 0));
+            var customAxis4 = new OxyPlot.Axes.RangeColorAxis { Key = "customColorsARGB4" };
+            customAxis4.AddRange(0.0, 1.5, OxyPlot.OxyColor.FromArgb(8, 255, 0, 0));
+            customAxis4.AddRange(1.5, 2.5, OxyPlot.OxyColor.FromArgb(8, 0, 255, 0));
             this.plotView1.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.5, Maximum = 1.5, Title = "x" });
             this.plotView1.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.7, Maximum = 0.7, Title = "y" });
             this.plotView2.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.5, Maximum = 1.5, Title = "x" });
@@ -80,6 +93,12 @@ namespace HenonMap
             this.plotView5.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.0, Maximum = 0.5, Title = "beta" });
             this.plotView5.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -1.5, Maximum = 1.5, Title = "x" });
             this.plotView5.Model.Axes.Add(customAxis2);
+            this.plotView6x.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = 0.0, Maximum = 1.5, Title = "alpha" });
+            this.plotView6x.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -1.5, Maximum = 1.5, Title = "x" });
+            this.plotView6x.Model.Axes.Add(customAxis3);
+            this.plotView6y.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = 0.0, Maximum = 1.5, Title = "alpha" });
+            this.plotView6y.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.5, Maximum = 0.5, Title = "y" });
+            this.plotView6y.Model.Axes.Add(customAxis4);
         }
 
         // #1 default Map
@@ -282,17 +301,62 @@ namespace HenonMap
             this.plotView5.Refresh();
         }
 
+        // #6 double plot Map
+        // doublePlot -> X-param and Y-param plots side-by-side for bifurcation diagram of alpha (Color with ARGB)
+        private void drawDouble()
+        {
+            // Clear old data
+            this.scatterSeries6x.Points.Clear();
+            this.scatterSeries6y.Points.Clear();
+            this.plotView6x.Model.Series.Clear();
+            this.plotView6y.Model.Series.Clear();
+
+            // Outer iteration multiple beta
+            for (double alpha = -5.0; alpha < 5.0; alpha += STEP_BIFURCATION)
+            {
+                // Initialize data
+                double beta = this.beta6;
+                double x = DEFAULT_X;
+                double y = DEFAULT_Y;
+
+                // Iteration
+                for (int i = 0; i < NUM_ITERATIONS_BIFURCATION; ++i)
+                {
+                    // Henon function
+                    double x_new = 1.0 - alpha * x * x + y;
+                    y = beta * x;
+                    x = x_new;
+
+                    // Add point to plot
+                    double size = POINT_SIZE;
+                    double colorValue = 1.0;
+                    if (i > NUM_ITERATIONS_BIFURCATION - LAST_DISPLAY_BIFURCATION)
+                    {
+                        if (!(x > 10 || x < -10))
+                        {
+                            OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(alpha, x, size, colorValue, i);
+                            this.scatterSeries6x.Points.Add(pt);
+                        }
+                        if (!(y > 10 || y < -10))
+                        {
+                            OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(alpha, y, size, colorValue, i);
+                            this.scatterSeries6y.Points.Add(pt);
+                        }
+                    }
+                }
+            }
+
+            // Add series to plot
+            this.plotView6x.Model.Series.Add(this.scatterSeries6x);
+            this.plotView6y.Model.Series.Add(this.scatterSeries6y);
+            this.plotView6x.Refresh();
+            this.plotView6y.Refresh();
+        }
+
     }
 }
 
-// Oxyplot Scatter Series
-// https://oxyplot.readthedocs.io/en/latest/models/series/ScatterSeries.html
-
-// Oxyplot coloring!
-// https://stackoverflow.com/questions/44192118/custom-color-range-with-oxyplot-scatterplot
-
 /***
-#doublePlot -> X-param und Y-param Plots nebeneinander für (normales) Bifurkationsdiagramm gegen alpha (beta über Regler)
 #1Diteration -> Nur X-Plot gegen n (Widerholungen) = Vereinfachung ohne Y = 'Periodendiagramm'
 #1Dalpha -> Nur X-Plot gegen alpha (beta über Regler) = Vereinfachung ohne Y = Bifurcation Diagram for alpha (Color with ARGB) -> Periodenanalyse für verschiedene Farben?
 ***/
