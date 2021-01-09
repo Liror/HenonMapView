@@ -20,6 +20,8 @@ namespace HenonMap
             this.plotView1.Model = new OxyPlot.PlotModel { Title = "Default Hénon Map" };
             this.plotView2.Model = new OxyPlot.PlotModel { Title = "Adjustable Alpha Multiple Beta Hénon Map" };
             this.plotView3.Model = new OxyPlot.PlotModel { Title = "Multiple Alpha Adjustable Beta Hénon Map" };
+            this.plotView4.Model = new OxyPlot.PlotModel { Title = "Alpha against X Hénon Map" };
+            this.plotView5.Model = new OxyPlot.PlotModel { Title = "Beta against X Hénon Map" };
 
             // Select default tabPage
             this.initDrawing();
@@ -43,6 +45,14 @@ namespace HenonMap
 
                 case 3:
                     this.drawFixedBeta();
+                    break;
+
+                case 4:
+                    this.drawAlphaPlot();
+                    break;
+
+                case 5:
+                    this.drawBetaPlot();
                     break;
 
                 default:
@@ -214,6 +224,64 @@ namespace HenonMap
             {
                 this.beta3 = Convert.ToDouble(this.trackBar3b.Value) / 1000.0;
                 this.textBox3b.Text = Convert.ToString(this.beta3);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
+        // #4 alphaPlot parameter change
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox4.Text); }
+            catch { }
+            if (val != this.beta4)
+            {
+                this.beta4 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar4.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar4_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox4.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar4.Value)
+            {
+                this.beta4 = Convert.ToDouble(this.trackBar4.Value) / 1000.0;
+                this.textBox4.Text = Convert.ToString(this.beta4);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
+        // #5 betaPlot parameter change
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox5.Text); }
+            catch { }
+            if (val != this.alpha5)
+            {
+                this.alpha5 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar5.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar5_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox5.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar5.Value)
+            {
+                this.alpha5 = Convert.ToDouble(this.trackBar5.Value) / 1000.0;
+                this.textBox5.Text = Convert.ToString(this.alpha5);
             }
             tabControl1_SelectedIndexChanged(sender, e);
         }
