@@ -1,0 +1,13 @@
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\HenonMap.exe.config
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.csprojResolveAssemblyReference.cache
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.Properties.Resources.resources
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.csproj.GenerateResource.Cache
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\HenonMap.exe
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\HenonMap.pdb
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\OxyPlot.dll
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\OxyPlot.WindowsForms.dll
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\OxyPlot.xml
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\bin\Debug\OxyPlot.WindowsForms.xml
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.exe
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.pdb
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Debug\HenonMap.frmMain.resources
