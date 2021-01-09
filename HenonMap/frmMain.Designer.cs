@@ -64,13 +64,19 @@
             this.trackBar5 = new System.Windows.Forms.TrackBar();
             this.plotView5 = new OxyPlot.WindowsForms.PlotView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.plotView6x = new OxyPlot.WindowsForms.PlotView();
-            this.plotView6y = new OxyPlot.WindowsForms.PlotView();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.trackBar6 = new System.Windows.Forms.TrackBar();
+            this.plotView6y = new OxyPlot.WindowsForms.PlotView();
+            this.plotView6x = new OxyPlot.WindowsForms.PlotView();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.plotView7 = new OxyPlot.WindowsForms.PlotView();
+            this.textBox7b = new System.Windows.Forms.TextBox();
+            this.textBox7a = new System.Windows.Forms.TextBox();
+            this.label7b = new System.Windows.Forms.Label();
+            this.label7a = new System.Windows.Forms.Label();
+            this.trackBar7b = new System.Windows.Forms.TrackBar();
+            this.trackBar7a = new System.Windows.Forms.TrackBar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1b)).BeginInit();
@@ -87,6 +93,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -98,7 +107,6 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -557,54 +565,6 @@
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.SizeChanged += new System.EventHandler(this.tabPage6_SizeChanged);
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1256, 656);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "1D Iteration";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1256, 656);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "1D Alpha";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // plotView6x
-            // 
-            this.plotView6x.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.plotView6x.Location = new System.Drawing.Point(0, 0);
-            this.plotView6x.Margin = new System.Windows.Forms.Padding(0);
-            this.plotView6x.Name = "plotView6x";
-            this.plotView6x.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView6x.Size = new System.Drawing.Size(628, 611);
-            this.plotView6x.TabIndex = 0;
-            this.plotView6x.Text = "plotView6";
-            this.plotView6x.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plotView6x.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plotView6x.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
-            // plotView6y
-            // 
-            this.plotView6y.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.plotView6y.Location = new System.Drawing.Point(628, 0);
-            this.plotView6y.Margin = new System.Windows.Forms.Padding(0);
-            this.plotView6y.Name = "plotView6y";
-            this.plotView6y.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView6y.Size = new System.Drawing.Size(628, 611);
-            this.plotView6y.TabIndex = 1;
-            this.plotView6y.Text = "plotView7";
-            this.plotView6y.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plotView6y.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plotView6y.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
             // textBox6
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -640,6 +600,138 @@
             this.trackBar6.TabIndex = 22;
             this.trackBar6.ValueChanged += new System.EventHandler(this.trackBar6_ValueChanged);
             // 
+            // plotView6y
+            // 
+            this.plotView6y.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plotView6y.Location = new System.Drawing.Point(628, 0);
+            this.plotView6y.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView6y.Name = "plotView6y";
+            this.plotView6y.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView6y.Size = new System.Drawing.Size(628, 611);
+            this.plotView6y.TabIndex = 1;
+            this.plotView6y.Text = "plotView7";
+            this.plotView6y.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView6y.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView6y.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // plotView6x
+            // 
+            this.plotView6x.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.plotView6x.Location = new System.Drawing.Point(0, 0);
+            this.plotView6x.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView6x.Name = "plotView6x";
+            this.plotView6x.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView6x.Size = new System.Drawing.Size(628, 611);
+            this.plotView6x.TabIndex = 0;
+            this.plotView6x.Text = "plotView6";
+            this.plotView6x.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView6x.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView6x.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.textBox7b);
+            this.tabPage7.Controls.Add(this.textBox7a);
+            this.tabPage7.Controls.Add(this.label7b);
+            this.tabPage7.Controls.Add(this.label7a);
+            this.tabPage7.Controls.Add(this.trackBar7b);
+            this.tabPage7.Controls.Add(this.trackBar7a);
+            this.tabPage7.Controls.Add(this.plotView7);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1256, 656);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "1D Iteration";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // plotView7
+            // 
+            this.plotView7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plotView7.Location = new System.Drawing.Point(0, 0);
+            this.plotView7.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView7.Name = "plotView7";
+            this.plotView7.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView7.Size = new System.Drawing.Size(1256, 566);
+            this.plotView7.TabIndex = 0;
+            this.plotView7.Text = "plotView6";
+            this.plotView7.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView7.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView7.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // textBox7b
+            // 
+            this.textBox7b.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox7b.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7b.Location = new System.Drawing.Point(1122, 611);
+            this.textBox7b.Name = "textBox7b";
+            this.textBox7b.Size = new System.Drawing.Size(131, 26);
+            this.textBox7b.TabIndex = 12;
+            this.textBox7b.TextChanged += new System.EventHandler(this.textBox7b_TextChanged);
+            // 
+            // textBox7a
+            // 
+            this.textBox7a.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox7a.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7a.Location = new System.Drawing.Point(1122, 566);
+            this.textBox7a.Name = "textBox7a";
+            this.textBox7a.Size = new System.Drawing.Size(131, 26);
+            this.textBox7a.TabIndex = 11;
+            this.textBox7a.TextChanged += new System.EventHandler(this.textBox7a_TextChanged);
+            // 
+            // label7b
+            // 
+            this.label7b.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7b.AutoSize = true;
+            this.label7b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7b.Location = new System.Drawing.Point(6, 611);
+            this.label7b.Name = "label7b";
+            this.label7b.Size = new System.Drawing.Size(47, 24);
+            this.label7b.TabIndex = 10;
+            this.label7b.Text = "Beta";
+            // 
+            // label7a
+            // 
+            this.label7a.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7a.AutoSize = true;
+            this.label7a.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7a.Location = new System.Drawing.Point(3, 566);
+            this.label7a.Name = "label7a";
+            this.label7a.Size = new System.Drawing.Size(59, 24);
+            this.label7a.TabIndex = 9;
+            this.label7a.Text = "Alpha";
+            // 
+            // trackBar7b
+            // 
+            this.trackBar7b.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar7b.LargeChange = 100;
+            this.trackBar7b.Location = new System.Drawing.Point(70, 611);
+            this.trackBar7b.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBar7b.Maximum = 5000;
+            this.trackBar7b.Minimum = -5000;
+            this.trackBar7b.Name = "trackBar7b";
+            this.trackBar7b.Size = new System.Drawing.Size(1049, 45);
+            this.trackBar7b.TabIndex = 8;
+            this.trackBar7b.ValueChanged += new System.EventHandler(this.trackBar7b_ValueChanged);
+            // 
+            // trackBar7a
+            // 
+            this.trackBar7a.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar7a.LargeChange = 100;
+            this.trackBar7a.Location = new System.Drawing.Point(70, 566);
+            this.trackBar7a.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBar7a.Maximum = 5000;
+            this.trackBar7a.Minimum = -5000;
+            this.trackBar7a.Name = "trackBar7a";
+            this.trackBar7a.Size = new System.Drawing.Size(1049, 45);
+            this.trackBar7a.TabIndex = 7;
+            this.trackBar7a.ValueChanged += new System.EventHandler(this.trackBar7a_ValueChanged);
+            // 
             // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(1264, 682);
@@ -669,6 +761,10 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -684,7 +780,6 @@
         private OxyPlot.WindowsForms.PlotView plotView1;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TrackBar trackBar1a;
         private System.Windows.Forms.TrackBar trackBar1b;
         private System.Windows.Forms.TextBox textBox1b;
@@ -718,6 +813,13 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar trackBar6;
+        private System.Windows.Forms.TextBox textBox7b;
+        private System.Windows.Forms.TextBox textBox7a;
+        private System.Windows.Forms.Label label7b;
+        private System.Windows.Forms.Label label7a;
+        private System.Windows.Forms.TrackBar trackBar7b;
+        private System.Windows.Forms.TrackBar trackBar7a;
+        private OxyPlot.WindowsForms.PlotView plotView7;
 
     }
 }

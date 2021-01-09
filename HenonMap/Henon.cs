@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
 
 namespace HenonMap
 {
@@ -17,6 +18,7 @@ namespace HenonMap
         private const int NUM_ITERATIONS_BIFURCATION = 1100;
         private const int LAST_DISPLAY_BIFURCATION = 1000;
         private const double STEP_BIFURCATION = 0.001;
+        private const int PURE_ITERATIONS = 1000;
 
         // Variables
         private OxyPlot.Series.ScatterSeries scatterSeries1 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
@@ -26,6 +28,7 @@ namespace HenonMap
         private OxyPlot.Series.ScatterSeries scatterSeries5 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries6x = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries6y = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
+        private OxyPlot.Series.ScatterSeries scatterSeries7 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private double alpha1 = DEFAULT_ALPHA;
         private double beta1 = DEFAULT_BETA;
         private double alpha2 = DEFAULT_ALPHA;
@@ -35,18 +38,21 @@ namespace HenonMap
         private double beta4 = DEFAULT_BETA;
         private double alpha5 = DEFAULT_ALPHA;
         private double beta6 = DEFAULT_BETA;
+        private double alpha7 = DEFAULT_ALPHA;
+        private double beta7 = DEFAULT_BETA;
 
         // Initializers
         private void initDrawing()
         {
             // Initializer values
-            this.scatterSeries1.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries2.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries3.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries4.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries5.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries6x.TrackerFormatString += "\nIteration: {Tag}";
-            this.scatterSeries6y.TrackerFormatString += "\nIteration: {Tag}";
+            this.scatterSeries1.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries2.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries3.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries4.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries5.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries6x.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries6y.TrackerFormatString += "\niteration: {Tag}";
+            this.scatterSeries7.TrackerFormatString += "\ny: {Tag}";
             this.textBox1a.Text = Convert.ToString(this.alpha1);
             this.textBox1b.Text = Convert.ToString(this.beta1);
             this.trackBar1a.Value = Convert.ToInt32(this.alpha1 * 1000);
@@ -65,6 +71,14 @@ namespace HenonMap
             this.trackBar5.Value = Convert.ToInt32(this.alpha5 * 1000);
             this.textBox6.Text = Convert.ToString(this.beta6);
             this.trackBar6.Value = Convert.ToInt32(this.beta6 * 1000);
+            this.textBox7a.Text = Convert.ToString(this.alpha7);
+            this.textBox7b.Text = Convert.ToString(this.beta7);
+            this.trackBar7a.Value = Convert.ToInt32(this.alpha7 * 1000);
+            this.trackBar7b.Value = Convert.ToInt32(this.beta7 * 1000);
+
+            // Initialize colors
+            this.plotView1.Model.DefaultColors = new List<OxyPlot.OxyColor> { OxyPlot.OxyColors.Purple, };
+            this.plotView7.Model.DefaultColors = new List<OxyPlot.OxyColor> { OxyPlot.OxyColors.Purple, };
 
             // Initialize axis
             var customAxis1 = new OxyPlot.Axes.RangeColorAxis { Key = "customColorsARGB1" };
@@ -99,6 +113,8 @@ namespace HenonMap
             this.plotView6y.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = 0.0, Maximum = 1.5, Title = "alpha" });
             this.plotView6y.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.5, Maximum = 0.5, Title = "y" });
             this.plotView6y.Model.Axes.Add(customAxis4);
+            this.plotView7.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = 0, Maximum = PURE_ITERATIONS, Title = "n iterations" });
+            this.plotView7.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -1.5, Maximum = 1.5, Title = "x" });
         }
 
         // #1 default Map
@@ -353,10 +369,39 @@ namespace HenonMap
             this.plotView6y.Refresh();
         }
 
+        // #7 1D oteration periodic Map
+        // 1Diteration -> x plot against n (period)
+        private void drawIterationMap()
+        {
+            // Clear old data
+            this.scatterSeries7.Points.Clear();
+            this.plotView7.Model.Series.Clear();
+
+            // Initialize data
+            double x = DEFAULT_X;
+            double y = DEFAULT_Y;
+            double alpha = this.alpha7;
+            double beta = this.beta7;
+
+            // Iteration
+            for (int i = 0; i < PURE_ITERATIONS; ++i)
+            {
+                // Henon function
+                double x_new = 1.0 - alpha * x * x + y;
+                y = beta * x;
+                x = x_new;
+
+                // Add point to plot
+                double size = POINT_SIZE*2;
+                double colorValue = 100.0;
+                OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(i, x, size, colorValue, y);
+                this.scatterSeries7.Points.Add(pt);
+            }
+
+            // Add series to plot
+            this.plotView7.Model.Series.Add(this.scatterSeries7);
+            this.plotView7.Refresh();
+        }
+
     }
 }
-
-/***
-#1Diteration -> Nur X-Plot gegen n (Widerholungen) = Vereinfachung ohne Y = 'Periodendiagramm'
-#1Dalpha -> Nur X-Plot gegen alpha (beta über Regler) = Vereinfachung ohne Y = Bifurcation Diagram for alpha (Color with ARGB) -> Periodenanalyse für verschiedene Farben?
-***/

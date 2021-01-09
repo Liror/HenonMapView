@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +22,7 @@ namespace HenonMap
             this.plotView5.Model = new OxyPlot.PlotModel { Title = "Beta against X Hénon Map" };
             this.plotView6x.Model = new OxyPlot.PlotModel { Title = "Alpha against X Hénon Map" };
             this.plotView6y.Model = new OxyPlot.PlotModel { Title = "Alpha against Y Hénon Map" };
+            this.plotView7.Model = new OxyPlot.PlotModel { Title = "Period on X Hénon Map" };
 
             // Select default tabPage
             this.initDrawing();
@@ -54,6 +53,9 @@ namespace HenonMap
                     break;
                 case 6:
                     this.drawDouble();
+                    break;
+                case 7:
+                    this.drawIterationMap();
                     break;
                 default:
                     break;
@@ -321,6 +323,62 @@ namespace HenonMap
             {
                 this.beta6 = Convert.ToDouble(this.trackBar6.Value) / 1000.0;
                 this.textBox6.Text = Convert.ToString(this.beta6);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
+        // #7 1Diteration parameter change
+        private void textBox7a_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox7a.Text); }
+            catch { }
+            if (val != this.alpha7)
+            {
+                this.alpha7 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar7a.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void textBox7b_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox7b.Text); }
+            catch { }
+            if (val != this.beta7)
+            {
+                this.beta7 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar7b.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar7a_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox7a.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar7a.Value)
+            {
+                this.alpha7 = Convert.ToDouble(this.trackBar7a.Value) / 1000.0;
+                this.textBox7a.Text = Convert.ToString(this.alpha7);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar7b_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox7b.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar7b.Value)
+            {
+                this.beta7 = Convert.ToDouble(this.trackBar7b.Value) / 1000.0;
+                this.textBox7b.Text = Convert.ToString(this.beta7);
             }
             tabControl1_SelectedIndexChanged(sender, e);
         }
