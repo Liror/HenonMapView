@@ -70,13 +70,15 @@
             this.plotView6y = new OxyPlot.WindowsForms.PlotView();
             this.plotView6x = new OxyPlot.WindowsForms.PlotView();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.plotView7 = new OxyPlot.WindowsForms.PlotView();
             this.textBox7b = new System.Windows.Forms.TextBox();
             this.textBox7a = new System.Windows.Forms.TextBox();
             this.label7b = new System.Windows.Forms.Label();
             this.label7a = new System.Windows.Forms.Label();
             this.trackBar7b = new System.Windows.Forms.TrackBar();
             this.trackBar7a = new System.Windows.Forms.TrackBar();
+            this.plotView7 = new OxyPlot.WindowsForms.PlotView();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.plotView8 = new OxyPlot.WindowsForms.PlotView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1b)).BeginInit();
@@ -96,6 +98,7 @@
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).BeginInit();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,6 +110,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -646,22 +650,6 @@
             this.tabPage7.Text = "1D Iteration";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // plotView7
-            // 
-            this.plotView7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.plotView7.Location = new System.Drawing.Point(0, 0);
-            this.plotView7.Margin = new System.Windows.Forms.Padding(0);
-            this.plotView7.Name = "plotView7";
-            this.plotView7.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView7.Size = new System.Drawing.Size(1256, 566);
-            this.plotView7.TabIndex = 0;
-            this.plotView7.Text = "plotView6";
-            this.plotView7.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plotView7.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plotView7.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
             // textBox7b
             // 
             this.textBox7b.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -732,6 +720,45 @@
             this.trackBar7a.TabIndex = 7;
             this.trackBar7a.ValueChanged += new System.EventHandler(this.trackBar7a_ValueChanged);
             // 
+            // plotView7
+            // 
+            this.plotView7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plotView7.Location = new System.Drawing.Point(0, 0);
+            this.plotView7.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView7.Name = "plotView7";
+            this.plotView7.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView7.Size = new System.Drawing.Size(1256, 566);
+            this.plotView7.TabIndex = 0;
+            this.plotView7.Text = "plotView6";
+            this.plotView7.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView7.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView7.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.plotView8);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1256, 656);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Heatmap";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // plotView8
+            // 
+            this.plotView8.Location = new System.Drawing.Point(0, 0);
+            this.plotView8.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView8.Name = "plotView8";
+            this.plotView8.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView8.Size = new System.Drawing.Size(1256, 656);
+            this.plotView8.TabIndex = 0;
+            this.plotView8.Text = "plotView6";
+            this.plotView8.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView8.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView8.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
             // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(1264, 682);
@@ -765,6 +792,7 @@
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).EndInit();
+            this.tabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -820,6 +848,8 @@
         private System.Windows.Forms.TrackBar trackBar7b;
         private System.Windows.Forms.TrackBar trackBar7a;
         private OxyPlot.WindowsForms.PlotView plotView7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private OxyPlot.WindowsForms.PlotView plotView8;
 
     }
 }

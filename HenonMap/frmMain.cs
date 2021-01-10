@@ -23,6 +23,7 @@ namespace HenonMap
             this.plotView6x.Model = new OxyPlot.PlotModel { Title = "Alpha against X Hénon Map" };
             this.plotView6y.Model = new OxyPlot.PlotModel { Title = "Alpha against Y Hénon Map" };
             this.plotView7.Model = new OxyPlot.PlotModel { Title = "Period on X Hénon Map" };
+            this.plotView8.Model = new OxyPlot.PlotModel { Title = "Alpha-Beta Period Heatmap for Hénon Map" };
 
             // Select default tabPage
             this.initDrawing();
@@ -56,6 +57,9 @@ namespace HenonMap
                     break;
                 case 7:
                     this.drawIterationMap();
+                    break;
+                case 8:
+                    this.drawHeatMap();
                     break;
                 default:
                     break;
