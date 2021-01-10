@@ -119,7 +119,7 @@ namespace HenonMap
             this.plotView1.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.7, Maximum = 0.7, Title = "y" });
             this.plotView2.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.5, Maximum = 1.5, Title = "x" });
             this.plotView2.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.7, Maximum = 0.7, Title = "y" });
-            this.plotView2.Model.Axes.Add(new OxyPlot.Axes.LinearColorAxis { Title = "beta", Position = OxyPlot.Axes.AxisPosition.Right, Palette = OxyPlot.OxyPalettes.Jet(1000), Minimum = 0.0, Maximum = 2.0 });
+            this.plotView2.Model.Axes.Add(new OxyPlot.Axes.LinearColorAxis { Title = "beta", Position = OxyPlot.Axes.AxisPosition.Right, Palette = OxyPlot.OxyPalettes.Jet(1000), Minimum = -1.0, Maximum = 1.0 });
             this.plotView3.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.5, Maximum = 1.5, Title = "x" });
             this.plotView3.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -0.7, Maximum = 0.7, Title = "y" });
             this.plotView3.Model.Axes.Add(new OxyPlot.Axes.LinearColorAxis { Title = "alpha", Position = OxyPlot.Axes.AxisPosition.Right, Palette = OxyPlot.OxyPalettes.Jet(1000), Minimum = 0.0, Maximum = 2.0 });
@@ -190,7 +190,7 @@ namespace HenonMap
             // Outer iteration multiple beta
             if (this.steps2 <= 0.0)
                 this.steps2 = 0.01;
-            for (double beta = 0.0; beta < 2.0; beta += this.steps2)
+            for (double beta = -1.0; beta < 1.0; beta += this.steps2)
             {
                 // Initialize data
                 double alpha = this.alpha2;

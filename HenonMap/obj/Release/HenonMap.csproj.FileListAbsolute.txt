@@ -10,3 +10,4 @@ C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Relea
 C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Release\HenonMap.csproj.GenerateResource.Cache
 C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Release\HenonMap.exe
 C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Release\HenonMap.pdb
+C:\Users\Lukas\Documents\Visual Studio 2010\Projects\HenonMap\HenonMap\obj\Release\HenonMap.csprojResolveAssemblyReference.cache
