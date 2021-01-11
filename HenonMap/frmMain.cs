@@ -66,6 +66,13 @@ namespace HenonMap
             }
         }
 
+        // Toggle view of fixed points
+        private void tabControl1_DoubleClick(object sender, EventArgs e)
+        {
+            this.showFixedPoints = !this.showFixedPoints;
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
         // Window Client Size Changed
         private void tabPage6_SizeChanged(object sender, EventArgs e)
         {

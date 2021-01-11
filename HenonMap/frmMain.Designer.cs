@@ -119,6 +119,7 @@
             this.tabControl1.Size = new System.Drawing.Size(1264, 682);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // tabPage1
             // 
@@ -136,6 +137,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Default Map";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox1b
             // 
@@ -239,6 +241,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Fixed Alpha";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox2b
             // 
@@ -340,6 +343,7 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Fixed Beta";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox3b
             // 
@@ -438,6 +442,7 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Alpha Plot";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox4
             // 
@@ -502,6 +507,7 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Beta Plot";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox5
             // 
@@ -568,6 +574,7 @@
             this.tabPage6.Text = "Double Plot";
             this.tabPage6.UseVisualStyleBackColor = true;
             this.tabPage6.SizeChanged += new System.EventHandler(this.tabPage6_SizeChanged);
+            this.tabPage6.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox6
             // 
@@ -649,6 +656,7 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "1D Iteration";
             this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage7.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // textBox7b
             // 
@@ -745,6 +753,7 @@
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Heatmap";
             this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage8.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
             // 
             // plotView8
             // 
