@@ -79,6 +79,14 @@
             this.plotView7 = new OxyPlot.WindowsForms.PlotView();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.plotView8 = new OxyPlot.WindowsForms.PlotView();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.textBox9b = new System.Windows.Forms.TextBox();
+            this.textBox9a = new System.Windows.Forms.TextBox();
+            this.label9b = new System.Windows.Forms.Label();
+            this.label9a = new System.Windows.Forms.Label();
+            this.trackBar9b = new System.Windows.Forms.TrackBar();
+            this.trackBar9a = new System.Windows.Forms.TrackBar();
+            this.plotView9 = new OxyPlot.WindowsForms.PlotView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1b)).BeginInit();
@@ -99,6 +107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).BeginInit();
             this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9b)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9a)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -111,6 +122,7 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -771,6 +783,109 @@
             this.plotView8.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView8.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.plotView9);
+            this.tabPage9.Controls.Add(this.textBox9b);
+            this.tabPage9.Controls.Add(this.textBox9a);
+            this.tabPage9.Controls.Add(this.label9b);
+            this.tabPage9.Controls.Add(this.label9a);
+            this.tabPage9.Controls.Add(this.trackBar9b);
+            this.tabPage9.Controls.Add(this.trackBar9a);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(1256, 656);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Starting Value";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            this.tabPage9.DoubleClick += new System.EventHandler(this.tabControl1_DoubleClick);
+            // 
+            // textBox9b
+            // 
+            this.textBox9b.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9b.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9b.Location = new System.Drawing.Point(1122, 611);
+            this.textBox9b.Name = "textBox9b";
+            this.textBox9b.Size = new System.Drawing.Size(131, 26);
+            this.textBox9b.TabIndex = 12;
+            this.textBox9b.TextChanged += new System.EventHandler(this.textBox9b_TextChanged);
+            // 
+            // textBox9a
+            // 
+            this.textBox9a.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9a.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9a.Location = new System.Drawing.Point(1122, 566);
+            this.textBox9a.Name = "textBox9a";
+            this.textBox9a.Size = new System.Drawing.Size(131, 26);
+            this.textBox9a.TabIndex = 11;
+            this.textBox9a.TextChanged += new System.EventHandler(this.textBox9a_TextChanged);
+            // 
+            // label9b
+            // 
+            this.label9b.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9b.AutoSize = true;
+            this.label9b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9b.Location = new System.Drawing.Point(6, 611);
+            this.label9b.Name = "label9b";
+            this.label9b.Size = new System.Drawing.Size(47, 24);
+            this.label9b.TabIndex = 10;
+            this.label9b.Text = "Beta";
+            // 
+            // label9a
+            // 
+            this.label9a.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9a.AutoSize = true;
+            this.label9a.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9a.Location = new System.Drawing.Point(3, 566);
+            this.label9a.Name = "label9a";
+            this.label9a.Size = new System.Drawing.Size(59, 24);
+            this.label9a.TabIndex = 9;
+            this.label9a.Text = "Alpha";
+            // 
+            // trackBar9b
+            // 
+            this.trackBar9b.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar9b.LargeChange = 100;
+            this.trackBar9b.Location = new System.Drawing.Point(70, 611);
+            this.trackBar9b.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBar9b.Maximum = 5000;
+            this.trackBar9b.Minimum = -5000;
+            this.trackBar9b.Name = "trackBar9b";
+            this.trackBar9b.Size = new System.Drawing.Size(1049, 45);
+            this.trackBar9b.TabIndex = 8;
+            this.trackBar9b.ValueChanged += new System.EventHandler(this.trackBar9b_ValueChanged);
+            // 
+            // trackBar9a
+            // 
+            this.trackBar9a.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar9a.LargeChange = 100;
+            this.trackBar9a.Location = new System.Drawing.Point(70, 566);
+            this.trackBar9a.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBar9a.Maximum = 5000;
+            this.trackBar9a.Minimum = -5000;
+            this.trackBar9a.Name = "trackBar9a";
+            this.trackBar9a.Size = new System.Drawing.Size(1049, 45);
+            this.trackBar9a.TabIndex = 7;
+            this.trackBar9a.ValueChanged += new System.EventHandler(this.trackBar9a_ValueChanged);
+            // 
+            // plotView9
+            // 
+            this.plotView9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.plotView9.Location = new System.Drawing.Point(0, 0);
+            this.plotView9.Margin = new System.Windows.Forms.Padding(0);
+            this.plotView9.Name = "plotView9";
+            this.plotView9.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView9.Size = new System.Drawing.Size(1256, 566);
+            this.plotView9.TabIndex = 13;
+            this.plotView9.Text = "plotView9";
+            this.plotView9.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView9.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView9.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
             // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(1264, 682);
@@ -805,6 +920,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7a)).EndInit();
             this.tabPage8.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9b)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar9a)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -862,6 +981,14 @@
         private OxyPlot.WindowsForms.PlotView plotView7;
         private System.Windows.Forms.TabPage tabPage8;
         private OxyPlot.WindowsForms.PlotView plotView8;
+        private System.Windows.Forms.TabPage tabPage9;
+        private OxyPlot.WindowsForms.PlotView plotView9;
+        private System.Windows.Forms.TextBox textBox9b;
+        private System.Windows.Forms.TextBox textBox9a;
+        private System.Windows.Forms.Label label9b;
+        private System.Windows.Forms.Label label9a;
+        private System.Windows.Forms.TrackBar trackBar9b;
+        private System.Windows.Forms.TrackBar trackBar9a;
 
     }
 }

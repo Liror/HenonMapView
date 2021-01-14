@@ -57,6 +57,7 @@ namespace HenonMap
         private const int PURE_ITERATIONS = 1000;
         private const int MAX_PERIOD = 100;
         private const double DEFAULT_HEATMAP_STEP = 0.002;
+        private const double DEFAULT_STARTINGMAP_STEP = 0.02;
         private const double DEFAULT_DISTANCE_FIXPOINT = 0.01;
 
         // Variables
@@ -70,6 +71,7 @@ namespace HenonMap
         private OxyPlot.Series.ScatterSeries scatterSeries6y = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries7 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private OxyPlot.Series.ScatterSeries scatterSeries8 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
+        private OxyPlot.Series.ScatterSeries scatterSeries9 = new OxyPlot.Series.ScatterSeries { MarkerType = OxyPlot.MarkerType.Circle };
         private double alpha1 = DEFAULT_ALPHA;
         private double beta1 = DEFAULT_BETA;
         private double alpha2 = DEFAULT_ALPHA;
@@ -82,6 +84,9 @@ namespace HenonMap
         private double alpha7 = DEFAULT_ALPHA;
         private double beta7 = DEFAULT_BETA;
         private double steps8 = DEFAULT_HEATMAP_STEP;
+        private double alpha9 = DEFAULT_ALPHA;
+        private double beta9 = DEFAULT_BETA;
+        private double steps9 = DEFAULT_STARTINGMAP_STEP;
 
         // Initializers
         private void initDrawing()
@@ -96,6 +101,7 @@ namespace HenonMap
             this.scatterSeries6y.TrackerFormatString += "\niteration: {Tag}";
             this.scatterSeries7.TrackerFormatString += "\ny: {Tag}";
             this.scatterSeries8.TrackerFormatString += "\nperiod: {Tag}";
+            this.scatterSeries9.TrackerFormatString += "\nperiod: {Tag}";
             this.textBox1a.Text = Convert.ToString(this.alpha1);
             this.textBox1b.Text = Convert.ToString(this.beta1);
             this.trackBar1a.Value = Convert.ToInt32(this.alpha1 * 1000);
@@ -118,6 +124,10 @@ namespace HenonMap
             this.textBox7b.Text = Convert.ToString(this.beta7);
             this.trackBar7a.Value = Convert.ToInt32(this.alpha7 * 1000);
             this.trackBar7b.Value = Convert.ToInt32(this.beta7 * 1000);
+            this.textBox9a.Text = Convert.ToString(this.alpha9);
+            this.textBox9b.Text = Convert.ToString(this.beta9);
+            this.trackBar9a.Value = Convert.ToInt32(this.alpha9 * 1000);
+            this.trackBar9b.Value = Convert.ToInt32(this.beta9 * 1000);
 
             // Initialize colors
             this.plotView7.Model.DefaultColors = new List<OxyPlot.OxyColor> { OxyPlot.OxyColors.Purple, };
@@ -166,6 +176,9 @@ namespace HenonMap
             this.plotView8.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -1.0, Maximum = 2.5, Title = "alpha" });
             this.plotView8.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -1.2, Maximum = 1.2, Title = "beta" });
             this.plotView8.Model.Axes.Add(new OxyPlot.Axes.LinearColorAxis { Title = "period", Position = OxyPlot.Axes.AxisPosition.Right, Palette = OxyPlot.OxyPalettes.Jet(101), Minimum = 0.0, Maximum = 100.0 });
+            this.plotView9.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Minimum = -5.0, Maximum = 5.0, Title = "x" });
+            this.plotView9.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Minimum = -3.0, Maximum = 5.0, Title = "y" });
+            this.plotView9.Model.Axes.Add(new OxyPlot.Axes.LinearColorAxis { Title = "period", Position = OxyPlot.Axes.AxisPosition.Right, Palette = OxyPlot.OxyPalettes.Jet(101), Minimum = 0.0, Maximum = 100.0, LowColor = OxyPlot.OxyColors.Black });
         }
 
         // #1 default Map
@@ -188,9 +201,9 @@ namespace HenonMap
                 double size = POINT_SIZE > 3.0 ? POINT_SIZE : 3.0;
                 double colorValue = 3.0;
                 Point pt = this.UnstableFixedPoint(alpha, beta);
-                this.scatterSeries1.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue));
+                this.scatterSeries1.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue, "Fixed Point"));
                 pt = this.StableFixedPoint(alpha, beta);
-                this.scatterSeries1.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue));
+                this.scatterSeries1.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue, "Fixed Point"));
                 x = pt.X + DEFAULT_DISTANCE_FIXPOINT;
                 y = pt.Y + DEFAULT_DISTANCE_FIXPOINT;
             }
@@ -246,7 +259,7 @@ namespace HenonMap
 
                     // Add point to plot
                     double size = POINT_SIZE;
-                    if (i > NUM_ITERATIONS - LAST_DISPLAY)
+                    if (i > NUM_ITERATIONS - LAST_DISPLAY && !(x > 10 || x < -10))
                     {
                         OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(x, y, size, beta, i);
                         this.scatterSeries2.Points.Add(pt);
@@ -288,7 +301,7 @@ namespace HenonMap
 
                     // Add point to plot
                     double size = POINT_SIZE;
-                    if (i > NUM_ITERATIONS - LAST_DISPLAY)
+                    if (i > NUM_ITERATIONS - LAST_DISPLAY && !(x > 10 || x < -10))
                     {
                         OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(x, y, size, alpha, i);
                         this.scatterSeries3.Points.Add(pt);
@@ -323,9 +336,9 @@ namespace HenonMap
                     double size = POINT_SIZE;
                     double colorValue = 3.0;
                     Point pt = this.UnstableFixedPoint(alpha, beta);
-                    this.scatterSeries4.Points.Add(new OxyPlot.Series.ScatterPoint(alpha, pt.X, size, colorValue));
+                    this.scatterSeries4.Points.Add(new OxyPlot.Series.ScatterPoint(alpha, pt.X, size, colorValue, "Fixed Point"));
                     pt = this.StableFixedPoint(alpha, beta);
-                    this.scatterSeries4.Points.Add(new OxyPlot.Series.ScatterPoint(alpha, pt.X, size, colorValue));
+                    this.scatterSeries4.Points.Add(new OxyPlot.Series.ScatterPoint(alpha, pt.X, size, colorValue, "Fixed Point"));
                     x = pt.X + DEFAULT_DISTANCE_FIXPOINT;
                     y = pt.Y + DEFAULT_DISTANCE_FIXPOINT;
                 }
@@ -341,7 +354,7 @@ namespace HenonMap
                     // Add point to plot
                     double size = POINT_SIZE;
                     double colorValue = 1.0;
-                    if (i > NUM_ITERATIONS_BIFURCATION - LAST_DISPLAY_BIFURCATION && !(x>10 || x<-10))
+                    if (i > NUM_ITERATIONS_BIFURCATION - LAST_DISPLAY_BIFURCATION && !(x > 10 || x < -10))
                     {
                         OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(alpha, x, size, colorValue, i);
                         this.scatterSeries4.Points.Add(pt);
@@ -376,9 +389,9 @@ namespace HenonMap
                     double size = POINT_SIZE;
                     double colorValue = 3.0;
                     Point pt = this.UnstableFixedPoint(alpha, beta);
-                    this.scatterSeries5.Points.Add(new OxyPlot.Series.ScatterPoint(beta, pt.X, size, colorValue));
+                    this.scatterSeries5.Points.Add(new OxyPlot.Series.ScatterPoint(beta, pt.X, size, colorValue, "Fixed Point"));
                     pt = this.StableFixedPoint(alpha, beta);
-                    this.scatterSeries5.Points.Add(new OxyPlot.Series.ScatterPoint(beta, pt.X, size, colorValue));
+                    this.scatterSeries5.Points.Add(new OxyPlot.Series.ScatterPoint(beta, pt.X, size, colorValue, "Fixed Point"));
                     x = pt.X + DEFAULT_DISTANCE_FIXPOINT;
                     y = pt.Y + DEFAULT_DISTANCE_FIXPOINT;
                 }
@@ -493,8 +506,8 @@ namespace HenonMap
             this.plotView7.Refresh();
         }
 
-        // 81 Alpha-Beta Heatmap Map
-        // heatMap -> 
+        // #8 Alpha-Beta Heatmap Map
+        // heatMap -> plot the period as a color for all alpha & beta parameter values
         private void drawHeatMap()
         {
             // Clear old data
@@ -523,7 +536,7 @@ namespace HenonMap
                         x = DEFAULT_X;
                         y = DEFAULT_Y;
                     }
-                    
+
                     // Iteration
                     for (int i = 0; i < NUM_ITERATIONS_BIFURCATION; ++i)
                     {
@@ -586,6 +599,101 @@ namespace HenonMap
             // Add series to plot
             this.plotView8.Model.Series.Add(this.scatterSeries8);
             this.plotView8.Refresh();
+        }
+
+        // #9 x-y Starting Point Heatmap Map
+        // startingMap -> plot the period for given alpha and beta value for all possible starting points
+        private void drawStartingMap()
+        {
+            // Clear old data
+            this.scatterSeries9.Points.Clear();
+            this.plotView9.Model.Series.Clear();
+
+            // Fixed Points
+            if (this.showFixedPoints)
+            {
+                double size = POINT_SIZE > 3.0 ? POINT_SIZE : 3.0;
+                double colorValue = -10.0;
+                Point pt = this.UnstableFixedPoint(this.alpha9, this.beta9);
+                this.scatterSeries9.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue, "Fixed Point"));
+                pt = this.StableFixedPoint(this.alpha9, this.beta9);
+                this.scatterSeries9.Points.Add(new OxyPlot.Series.ScatterPoint(pt.X, pt.Y, size, colorValue, "Fixed Point"));
+            }
+
+            // X-Y double iteration
+            for (double y_s = -5.0; y_s <= 5.0; y_s += this.steps9)
+            {
+                for (double x_s = -5.0; x_s <= 5.0; x_s += this.steps9)
+                {
+                    // Initialize data
+                    double x = x_s;
+                    double y = y_s;
+                    double alpha = this.alpha9;
+                    double beta = this.beta9;
+                    Point[] pt_list = new Point[LAST_DISPLAY_BIFURCATION];
+
+                    // Iteration
+                    for (int i = 0; i < NUM_ITERATIONS_BIFURCATION; ++i)
+                    {
+                        // Henon function
+                        double x_new = 1.0 - alpha * x * x + y;
+                        y = beta * x;
+                        x = x_new;
+
+                        // Save points for period analysis
+                        if (i >= NUM_ITERATIONS_BIFURCATION - LAST_DISPLAY_BIFURCATION)
+                        {
+                            Point p = new Point { X = x, Y = y };
+                            pt_list[i - NUM_ITERATIONS_BIFURCATION + LAST_DISPLAY_BIFURCATION] = p;
+                        }
+                        // Shortcut for escaped points
+                        if (x > 10 || x < -10)
+                            break;
+                    }
+
+                    // Shortcut for escaped points
+                    if (x > 10 || x < -10)
+                        continue;
+
+                    // Find period (100 = no period found)
+                    int period = 1;
+                    try
+                    {
+                        for (; period < MAX_PERIOD; ++period)
+                        {
+                            bool found = true;
+                            for (int j = 0; j < period; ++j)
+                            {
+                                for (int i = 0; i < 5; ++i)
+                                {
+                                    if (!pt_list[LAST_DISPLAY_BIFURCATION - i * period - j - 1].Compare(pt_list[LAST_DISPLAY_BIFURCATION - (i + 1) * period - j - 1]))
+                                    {
+                                        found = false;
+                                        i = MAX_PERIOD;
+                                    }
+                                }
+                                if (!found)
+                                    j = period;
+                            }
+                            if (found)
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        period = MAX_PERIOD;
+                    }
+
+                    // Add point to plot (if not escaped)
+                    double size = POINT_SIZE;
+                    OxyPlot.Series.ScatterPoint pt = new OxyPlot.Series.ScatterPoint(x_s, y_s, size, period, period);
+                    this.scatterSeries9.Points.Add(pt);
+                }
+            }
+
+            // Add series to plot
+            this.plotView9.Model.Series.Add(this.scatterSeries9);
+            this.plotView9.Refresh();
         }
 
     }

@@ -24,6 +24,7 @@ namespace HenonMap
             this.plotView6y.Model = new OxyPlot.PlotModel { Title = "Alpha against Y Hénon Map" };
             this.plotView7.Model = new OxyPlot.PlotModel { Title = "Period on X Hénon Map" };
             this.plotView8.Model = new OxyPlot.PlotModel { Title = "Alpha-Beta Period Heatmap for Hénon Map" };
+            this.plotView9.Model = new OxyPlot.PlotModel { Title = "Period Heatmap for x-y starting points for Hénon Map" };
 
             // Select default tabPage
             this.initDrawing();
@@ -60,6 +61,9 @@ namespace HenonMap
                     break;
                 case 8:
                     this.drawHeatMap();
+                    break;
+                case 9:
+                    this.drawStartingMap();
                     break;
                 default:
                     break;
@@ -390,6 +394,62 @@ namespace HenonMap
             {
                 this.beta7 = Convert.ToDouble(this.trackBar7b.Value) / 1000.0;
                 this.textBox7b.Text = Convert.ToString(this.beta7);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+
+        // #9 startingMap parameter change
+        private void textBox9a_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox9a.Text); }
+            catch { }
+            if (val != this.alpha9)
+            {
+                this.alpha9 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar9a.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void textBox9b_TextChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox9b.Text); }
+            catch { }
+            if (val != this.beta9)
+            {
+                this.beta9 = val;
+                int tmp = Convert.ToInt32(val * 1000);
+                if (tmp > 5000) tmp = 5000;
+                else if (tmp < -5000) tmp = -5000;
+                this.trackBar9b.Value = tmp;
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar9a_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox9a.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar9a.Value)
+            {
+                this.alpha9 = Convert.ToDouble(this.trackBar9a.Value) / 1000.0;
+                this.textBox9a.Text = Convert.ToString(this.alpha9);
+            }
+            tabControl1_SelectedIndexChanged(sender, e);
+        }
+        private void trackBar9b_ValueChanged(object sender, EventArgs e)
+        {
+            double val = 0;
+            try { val = Convert.ToDouble(this.textBox9b.Text); }
+            catch { }
+            if (Convert.ToInt32(val * 1000) != this.trackBar9b.Value)
+            {
+                this.beta9 = Convert.ToDouble(this.trackBar9b.Value) / 1000.0;
+                this.textBox9b.Text = Convert.ToString(this.beta9);
             }
             tabControl1_SelectedIndexChanged(sender, e);
         }
